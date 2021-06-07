@@ -1,0 +1,110 @@
+package daay1;
+
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+
+
+public class TestLog {
+
+	public static void main(String[] args) {
+     
+		System.setProperty("webdriver.chrome.driver","E://Driver//chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		
+		driver.get("https://goo.gl/RVdKM9"); 
+		
+		String title=driver.getTitle();
+		System.out.println("Title of the page is:"+title);
+		
+		String url=driver.getCurrentUrl();
+		System.out.println("Url of the page is:"+url);
+		
+//		System.out.println(driver.getPageSource());
+		
+		//firstname
+		
+		driver.findElement(By.xpath("//*[@id=\"RESULT_TextField-1\"]")).sendKeys("John");
+		
+		
+       //lastname
+		
+		driver.findElement(By.xpath("//*[@id=\"RESULT_TextField-2\"]")).sendKeys("dev");
+		
+		//phoneNumber
+		
+		driver.findElement(By.xpath("//*[@id=\"RESULT_TextField-3\"]")).sendKeys("9897987654");
+		
+		driver.findElement(By.xpath("//*[@id=\"RESULT_TextField-4\"]")).sendKeys("India");
+		
+		driver.findElement(By.xpath("//*[@id=\"RESULT_TextField-5\"]")).sendKeys("delhi");
+		
+		driver.findElement(By.xpath("//*[@id=\"RESULT_TextField-6\"]")).sendKeys("test@gmail.com");
+		
+		
+		// Handle with dropdown
+		
+//		WebElement drp=driver.findElement(By.xpath("//*[@id=\"RESULT_RadioButton-9\"]"));
+//		Select dropdown=new Select(drp);
+		
+		Select dropdown= new Select(driver.findElement(By.xpath("//*[@id=\"RESULT_RadioButton-9\"]")));
+		
+		System.out.println("No of dropdown present in :"+dropdown.getOptions().size());
+		
+		//Exact all the option and print them
+		
+		List <WebElement> option =dropdown.getOptions();
+		
+		for(WebElement e: option)
+		{
+			System.out.println(e.getText());
+		}
+		
+		//Select the dropdown box 
+		
+//		dropdown.selectByVisibleText("Morning");
+		
+		dropdown.selectByIndex(3);
+		
+//		dropdown.selectByValue("Radio-2");
+		
+		
+		// Handling radio button
+		
+		 //conditional button
+		
+		WebElement radmale=driver.findElement(By.id("RESULT_RadioButton-7_0"));
+		radmale.click(); //select a radio 
+		
+		System.out.println(radmale.isDisplayed()); // check display if it is true or false
+		
+		System.out.println(radmale.isEnabled()); // check the enabled of not
+		
+		System.out.println("Before Selecting "+radmale.isSelected()); //false
+		
+		
+		
+		
+		System.out.println("After selecting" +radmale.isSelected()); //true
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}
