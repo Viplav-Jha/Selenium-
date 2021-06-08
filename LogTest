@@ -1,4 +1,4 @@
-package day1;
+package daay1;
 
 
 import java.util.List;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestLog {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
      
 		System.setProperty("webdriver.chrome.driver","E://Driver//chromedriver.exe");
 		WebDriver driver= new ChromeDriver();
@@ -81,7 +81,6 @@ public class TestLog {
 		 //conditional button
 		
 		WebElement radmale=driver.findElement(By.id("RESULT_RadioButton-7_0"));
-		radmale.click(); //select a radio 
 		
 		System.out.println(radmale.isDisplayed()); // check display if it is true or false
 		
@@ -89,16 +88,39 @@ public class TestLog {
 		
 		System.out.println("Before Selecting "+radmale.isSelected()); //false
 		
-		
+//		radmale.click(); //select a radio 
 		
 		
 		System.out.println("After selecting" +radmale.isSelected()); //true
 		
 		
+		//Handle checkboxes
+		
+		driver.findElement(By.id("RESULT_CheckBox-8_0")).click(); //sunday
+		
+//		driver.findElement(By.id("RESULT_CheckBox-8_1")).click(); // monday
+		
+		// Handle with links
+		
+		driver.findElement(By.linkText("Software Testing Tutorials")).click();
+		
+		Thread.sleep(3000);
+		
+		System.out.println(driver.getTitle());
+		driver.navigate().back();
+		
+		driver.findElement(By.partialLinkText("Tools Training")).click();
+		System.out.println(driver.getTitle());
+		
+		driver.navigate().back();
+		
+		driver.navigate().forward();
+		System.out.println(driver.getTitle());
+		
+		driver.navigate().refresh();
 		
 		
-		
-		
+		driver.quit(); //all browser will be close
 		
 		
 		
