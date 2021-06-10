@@ -60,9 +60,9 @@ public class TestLog {
 		
 		//Exact all the option and print them
 		
-		List <WebElement> option =dropdown.getOptions();
+		List <WebElement> option =dropdown.getOptions();  //when multiple element is there , we use <WebElement>
 		
-		for(WebElement e: option)
+		for(WebElement e: option)   
 		{
 			System.out.println(e.getText());
 		}
